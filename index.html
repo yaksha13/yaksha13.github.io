@@ -1,120 +1,56 @@
-
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-
-    <title>Enter the 117th Fragment</title>
-    <meta name="description" content="Thought Experiments and playing with Data">
-
-    <meta name="HandheldFriendly" content="True">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <link rel="shortcut icon" href="favicon.ico">
-
-    <link rel="stylesheet" type="text/css" href="assets/css/screen.css?v=c2c1bdb043">
-    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Merriweather:300,700,700italic,300italic%7COpen+Sans:700,400">
-
-    <link rel="canonical" href="http://localhost:2368/">
-    
-    <meta property="og:site_name" content="Enter the 117th Fragment">
-    <meta property="og:type" content="website">
-    <meta property="og:title" content="Enter the 117th Fragment">
-    <meta property="og:description" content="Thought Experiments and playing with Data">
-    <meta property="og:url" content="http://localhost:2368/">
-    <meta property="og:image" content="http://localhost:2368/content/images/2015/06/floating-tree-night-image.jpg">
-    
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Enter the 117th Fragment">
-    <meta name="twitter:description" content="Thought Experiments and playing with Data">
-    <meta name="twitter:url" content="http://localhost:2368/">
-    <meta name="twitter:image:src" content="http://localhost:2368/content/images/2015/06/floating-tree-night-image.jpg">
-    
-    <script type="application/ld+json">
-{
-    "@context": "http://schema.org",
-    "@type": "Website",
-    "publisher": "Enter the 117th Fragment",
-    "url": "http://localhost:2368/",
-    "image": "http://localhost:2368/content/images/2015/06/floating-tree-night-image.jpg",
-    "description": "Thought Experiments and playing with Data"
-}
-    </script>
-
-    <meta name="generator" content="Ghost 0.6">
-    <link rel="alternate" type="application/rss+xml" title="Enter the 117th Fragment" href="http://localhost:2368/rss/">
-</head>
-<body class="home-template nav-closed">
-
-    <div class="nav">
-    <h3 class="nav-title">Menu</h3>
-    <a href="index.html#" class="nav-close">
-        <span class="hidden">Close</span>
-    </a>
-    <ul>
-            <li class="nav-home nav-current" role="presentation"><a href="http://localhost:2368/">Home</a></li>
-    </ul>
-    <a class="subscribe-button icon-feed" href="http://localhost:2368/rss/">Subscribe</a>
-</div>
-<span class="nav-cover"></span>
+<!doctype html public "awesomeniz">
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>Strange Attractor</title>
+    <link rel="stylesheet" href="style.css" type="text/css" >
+	</head>
+	<body>
+		<div id="modal">
+			<div id="intro">
+				<p>
+					“It has been said that something as small as the flutter of a butterfly’s wings can ultimately cause a typhoon halfway around the world” - The Butterfly Effect
+				</p>
+				<p>
+					Strange Attractors are amazing structures in Chaos Theory. They almost seem to bring science and art together. This is our attempt at visualizing their strange "attraction"!
+				</p>
+				<p>
+					<i>Note: This is an alpha build so please bear with us if something does not work! We plan to add many more attractors to the current list</i>
+				</p>
 
 
-    <div class="site-wrapper">
+				<div id="close_modal">Show me!</div>
+			</div>
+		</div>
+		<div id="overlay">
+			<div id="header">Strange Attraction - by Akshay Rao and Ronak Bhandari</div>
+			<div id="my-gui-container"></div>
+			<div style="clear:both"></div>
+			<div id="help">
+				<strong>Selecting and Modifying the attractors</strong><br/>
+				<ol>
+					<li>Choose an "attractor" from the dropdown menu above (top right)</li>
+					<li>Play with the parameters (sliders) to see interesting changes in the structure of the attractor</li>
+					<li>Press GO!</li>
+				</ol>
+				<strong>Manipulating the structure</strong><br/>
+				<ol>
+					<li>Click and Drag the object to change the perspective of the attractor</li>
+					<!-- <li>Use scroll to zoom in or zoom out of the structure</li> -->
+				</ol>
+			</div>
+			<div style="clear:both"></div>
+			<div id="footer">Inspired by <a href="http://chaoticatmospheres.deviantart.com/gallery/" target="_blank">Chaotic Atmospheres</a> and <a href="https://aerotwist.com/" target="_blank">Aerotwist</a></div>
+		</div>
+		<div id="wrapper">
+			<div id="container" class="light" style="bottom: 0"></div>
+		</div>
 
-        
-<header class="main-header " style="background-image: url(content/images/2015/06/floating-tree-night-image.jpg)">
-    <nav class="main-nav overlay clearfix">
-        
-            <a class="menu-button icon-menu" href="index.html#"><span class="word">Menu</span></a>
-    </nav>
-    <div class="vertical">
-        <div class="main-header-content inner">
-            <h1 class="page-title">Enter the 117th Fragment</h1>
-            <h2 class="page-description">Thought Experiments and playing with Data</h2>
-        </div>
-    </div>
-    <a class="scroll-down icon-arrow-left" href="index.html#content" data-offset="-45"><span class="hidden">Scroll Down</span></a>
-</header>
+    <script src="jquery.min.js"></script>
+    <script src="dat.gui.min.js"></script>
+    <script src="rAF.js"></script>
+	<script src="a3.min.js"></script>
+    <script src="sample.js"></script>
 
-<main id="content" class="content" role="main">
-
-    <div class="extra-pagination inner">
-    <nav class="pagination" role="navigation">
-    <span class="page-number">Page 1 of 1</span>
-</nav>
-</div>
-
-<article class="post">
-    <header class="post-header">
-        <h2 class="post-title"><a href="transcendence-ep0-burning-it-all/">Transcendence Ep0 - Burning it All</a></h2>
-    </header>
-    <section class="post-excerpt">
-        <p>(deus sic) He stared intently at his simple cellphone, either organising his thoughts into a text message or expectantly waiting for his phone to speak to <a class="read-more" href="transcendence-ep0-burning-it-all/">»</a></p>
-    </section>
-    <footer class="post-meta">
-        <img class="author-thumb" src="content/images/2015/06/profile_picture.jpg" alt="Akshay Rao" nopin="nopin">
-        <a href="author/akshay/">Akshay Rao</a>
-        
-        <time class="post-date" datetime="2015-06-07">07 June 2015</time>
-    </footer>
-</article>
-
-<nav class="pagination" role="navigation">
-    <span class="page-number">Page 1 of 1</span>
-</nav>
-
-</main>
-
-
-        <footer class="site-footer clearfix">
-            <section class="copyright"><a href="http://localhost:2368">Enter the 117th Fragment</a> © 2015</section>
-            <section class="poweredby">Proudly published with <a href="https://ghost.org">Ghost</a></section>
-        </footer>
-
-    </div>
-
-    <script src="public/jquery.js?v=c2c1bdb043"></script>
-
-    <script type="text/javascript" src="assets/js/jquery.fitvids.js?v=c2c1bdb043"></script>
-    <script type="text/javascript" src="assets/js/index.js?v=c2c1bdb043"></script>
-
-</body>
+	</body>
+</html>
