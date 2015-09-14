@@ -51,7 +51,7 @@ AEROTWIST.A3.Sample = new function() {
       NEAR             = 0.1,
       FAR              = 3000,
       VIEW_ANGLE       = 45,
-      LORENZ           = 1;
+      LORENZ           = 11;
       ROSSLER          = 2;
       CHEN_LEE         = 3;
       QI_CHEN          = 4;
@@ -61,13 +61,15 @@ AEROTWIST.A3.Sample = new function() {
       THOMAS           = 8;
       SAKARYA          = 9;
       HALVORSEN        = 10;
-      DADRAS           = 11;
+      DADRAS           = 1;
 
   this.iterations   = 100000;
   this.interval     = 0.005;
   this.fn           = 1;
+  // 1: {sigma : 10, rho : 28, beta : 2.67},
+  // 11: {rho : 3, sigma : 2.7, r : 1.7, zeta : 2, epsilon : 9}
   this.attractor_params = {
-    1: {sigma : 10, rho : 28, beta : 2.67},
+    1: {rho : 3, sigma : 2.7, r : 1.7, zeta : 2, epsilon : 9},
     2: {alpha : 0.2, beta : 0.2, zeta : 5.7},
     3: {alpha : 2, beta : -12, delta : -0.54},
     4: {alpha : 38, beta : 2.67, zeta : 80},
@@ -77,9 +79,9 @@ AEROTWIST.A3.Sample = new function() {
     8: {beta : 0.19},
     9: {alpha : 0.4, beta : 0.3},
     10: {alpha : 1.4},
-    11: {rho : 3, sigma : 2.7, r : 1.7, zeta : 2, epsilon : 9}
-  }
-  this.attractor    = 'LORENZ';
+    11: {sigma : 10, rho : 28, beta : 2.67}
+    }
+  this.attractor    = 'DADRAS';
 
   /**
    * Initialize the scene
@@ -103,12 +105,20 @@ AEROTWIST.A3.Sample = new function() {
     function updateGUIElements(attractor_id) {
         switch(attractor_id) {
             case 1:
-                DEPTH            = 1000;
-                VIEW_ANGLE       = 90;
-                gui.add(AEROTWIST.A3.Sample.attractor_params[1], 'sigma').name('Sigma').min(1).max(30).step(1);
-                gui.add(AEROTWIST.A3.Sample.attractor_params[1], 'rho').name('Rho').min(1).max(100).step(1);
-                gui.add(AEROTWIST.A3.Sample.attractor_params[1], 'beta').name('Beta').min(0.01).max(4).step(0.01);
+                DEPTH            = 900;
+                VIEW_ANGLE       = 45;
+                gui.add(AEROTWIST.A3.Sample.attractor_params[1], 'rho').name('Rho').min(1).max(10).step(1);
+                gui.add(AEROTWIST.A3.Sample.attractor_params[1], 'sigma').name('Sigma').min(0.1).max(5).step(0.1);
+                gui.add(AEROTWIST.A3.Sample.attractor_params[1], 'r').name('R').min(0.1).max(3).step(0.05);
+                gui.add(AEROTWIST.A3.Sample.attractor_params[1], 'zeta').name('Zeta').min(0.1).max(5).step(0.1);
+                gui.add(AEROTWIST.A3.Sample.attractor_params[1], 'epsilon').name('Epsilon').min(1).max(20).step(1);
                 break;
+                // DEPTH            = 1000;
+                // VIEW_ANGLE       = 90;
+                // gui.add(AEROTWIST.A3.Sample.attractor_params[1], 'sigma').name('Sigma').min(1).max(30).step(1);
+                // gui.add(AEROTWIST.A3.Sample.attractor_params[1], 'rho').name('Rho').min(1).max(100).step(1);
+                // gui.add(AEROTWIST.A3.Sample.attractor_params[1], 'beta').name('Beta').min(0.01).max(4).step(0.01);
+                // break;
 
             case 2:
                 DEPTH            = 900;
@@ -168,14 +178,20 @@ AEROTWIST.A3.Sample = new function() {
                 break;
 
             case 11:
-                DEPTH            = 900;
-                VIEW_ANGLE       = 45;
-                gui.add(AEROTWIST.A3.Sample.attractor_params[11], 'rho').name('Rho').min(1).max(10).step(1);
-                gui.add(AEROTWIST.A3.Sample.attractor_params[11], 'sigma').name('Sigma').min(0.1).max(5).step(0.1);
-                gui.add(AEROTWIST.A3.Sample.attractor_params[11], 'r').name('R').min(0.1).max(3).step(0.05);
-                gui.add(AEROTWIST.A3.Sample.attractor_params[11], 'zeta').name('Zeta').min(0.1).max(5).step(0.1);
-                gui.add(AEROTWIST.A3.Sample.attractor_params[11], 'epsilon').name('Epsilon').min(1).max(20).step(1);
+                DEPTH            = 1000;
+                VIEW_ANGLE       = 90;
+                gui.add(AEROTWIST.A3.Sample.attractor_params[11], 'sigma').name('Sigma').min(1).max(30).step(1);
+                gui.add(AEROTWIST.A3.Sample.attractor_params[11], 'rho').name('Rho').min(1).max(100).step(1);
+                gui.add(AEROTWIST.A3.Sample.attractor_params[11], 'beta').name('Beta').min(0.01).max(4).step(0.01);
                 break;
+                // DEPTH            = 900;
+                // VIEW_ANGLE       = 45;
+                // gui.add(AEROTWIST.A3.Sample.attractor_params[11], 'rho').name('Rho').min(1).max(10).step(1);
+                // gui.add(AEROTWIST.A3.Sample.attractor_params[11], 'sigma').name('Sigma').min(0.1).max(5).step(0.1);
+                // gui.add(AEROTWIST.A3.Sample.attractor_params[11], 'r').name('R').min(0.1).max(3).step(0.05);
+                // gui.add(AEROTWIST.A3.Sample.attractor_params[11], 'zeta').name('Zeta').min(0.1).max(5).step(0.1);
+                // gui.add(AEROTWIST.A3.Sample.attractor_params[11], 'epsilon').name('Epsilon').min(1).max(20).step(1);
+                // break;
         }
     }
 
@@ -189,7 +205,7 @@ AEROTWIST.A3.Sample = new function() {
     });
 
     gui.add(AEROTWIST.A3.Sample, 'attractor', {
-        LORENZ: 1,
+        DADRAS: 1,
         ROSSLER: 2,
         CHEN_LEE: 3,
         // QI_CHEN: 4,
@@ -199,7 +215,7 @@ AEROTWIST.A3.Sample = new function() {
         // THOMAS: 8,
         // SAKARYA: 9,
         // HALVORSEN: 10,
-        DADRAS: 11
+        LORENZ: 11
     }).onChange(function (d) {
         $(".divider-before").nextUntil($(".divider-after")).remove();
         updateGUIElements(parseInt(d,10));
@@ -270,13 +286,22 @@ AEROTWIST.A3.Sample = new function() {
       switch(me.fn) {
 
         case 1:
-          var a = me.attractor_params[1].sigma,
-              b = me.attractor_params[1].rho,
-              c = me.attractor_params[1].beta;
-          newX = x - (a * x) * interval + (a * y) * interval;
-          newY = y + (b * x) * interval - y * interval - (z * x) * interval;
-          newZ = z - (c * z) * interval + (x * y) * interval;
+          var a = me.attractor_params[1].rho,
+              b = me.attractor_params[1].sigma,
+              c = me.attractor_params[1].r,
+              d = me.attractor_params[1].zeta,
+              e = me.attractor_params[1].epsilon;
+          newX = x + (y * interval) - (a * x * interval) + (b * y * z * interval);
+          newY = y + (c * y * interval) - (x * z * interval) + (z * interval);
+          newZ = z + (d * x * y * interval) - (e * z * interval);
           break;
+          // var a = me.attractor_params[1].sigma,
+          //     b = me.attractor_params[1].rho,
+          //     c = me.attractor_params[1].beta;
+          // newX = x - (a * x) * interval + (a * y) * interval;
+          // newY = y + (b * x) * interval - y * interval - (z * x) * interval;
+          // newZ = z - (c * z) * interval + (x * y) * interval;
+          // break;
         case 2:
           var a = me.attractor_params[2].alpha,
               b = me.attractor_params[2].beta,
@@ -345,15 +370,23 @@ AEROTWIST.A3.Sample = new function() {
           newZ = z - (a * z * interval) - (4 * x * interval) - (4 * y * interval) - (x * x * interval);
           break;
         case 11:
-          var a = me.attractor_params[11].rho,
-              b = me.attractor_params[11].sigma,
-              c = me.attractor_params[11].r,
-              d = me.attractor_params[11].zeta,
-              e = me.attractor_params[11].epsilon;
-          newX = x + (y * interval) - (a * x * interval) + (b * y * z * interval);
-          newY = y + (c * y * interval) - (x * z * interval) + (z * interval);
-          newZ = z + (d * x * y * interval) - (e * z * interval);
+          var a = me.attractor_params[11].sigma,
+              b = me.attractor_params[11].rho,
+              c = me.attractor_params[11].beta;
+          newX = x - (a * x) * interval + (a * y) * interval;
+          newY = y + (b * x) * interval - y * interval - (z * x) * interval;
+          newZ = z - (c * z) * interval + (x * y) * interval;
           break;
+          // var a = me.attractor_params[11].rho,
+          //     b = me.attractor_params[11].sigma,
+          //     c = me.attractor_params[11].r,
+          //     d = me.attractor_params[11].zeta,
+          //     e = me.attractor_params[11].epsilon;
+          // newX = x + (y * interval) - (a * x * interval) + (b * y * z * interval);
+          // newY = y + (c * y * interval) - (x * z * interval) + (z * interval);
+          // newZ = z + (d * x * y * interval) - (e * z * interval);
+          // break;
+
       }
 
       minX = Math.min(minX, newX);
